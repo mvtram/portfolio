@@ -1,0 +1,5 @@
+export const CONFIG: any = {
+  blogID: '532684554388403575',
+  // API_KEY: 'AIzaSyDDshaUdEEBWHZ6XWxHa0A8u-_eqBUOSuE'
+  API_KEY: 'AIzaSyBSmM-pFG1yQtwCJGVSW4FfvN8oqJDGSSA'
+};

@@ -1,0 +1,57 @@
+<div class="work-container">
+  <div class="category-container">
+
+    <div class=" category-type" [ngClass]="isSelected?'category-type-selected':'category-type-not-selected'"
+      (click)="this.getAllWork()">All</div>
+
+    <div class="category-type" [ngClass]="isAngularSelected?'category-type-selected':'category-type-not-selected'"
+      (click)="this.getWorkbyCategory('Angular')">Angular</div>
+
+    <div class="category-type" [ngClass]="isReactSelected?'category-type-selected':'category-type-not-selected'"
+      (click)="this.getWorkbyCategory('React')">React</div>
+
+    <div class="category-type" [ngClass]="isMongodbSelected?'category-type-selected':'category-type-not-selected'"
+      (click)="this.getWorkbyCategory('Mongodb')">Mongodb</div>
+  </div>
+
+
+  <div class="all-project-container">
+    <div *ngIf=isSelected>
+      <div class="work-card" *ngFor="let work of Work_projects">
+        <h2 class="work-card-title">{{work.work_title}}</h2>
+        <!-- <h2 class="work-card-title">{{work.work_tag}}</h2>    -->
+        <div style="padding: 2vmin; margin: 2vmin;">
+          <img class="work-card-thumbnail" style="width: 100%; height: 25vmin;"
+            src="../../../assets/img/{{work.work_img}}.png" />
+        </div>
+      </div>
+    </div>
+    <div *ngIf=isAngularSelected>
+      <div class="work-card" *ngFor="let work of Category_projects">
+        <h2 class="work-card-title">{{work.work_title}}</h2>
+        <div style="padding: 2vmin; margin: 2vmin;">
+          <img class="work-card-thumbnail"  style="width: 100%; height: 25vmin;" src="../../../assets/img/{{work.work_img}}.png" />
+        </div>
+      </div>
+    </div>
+    <div *ngIf=isReactSelected>
+      <div class="work-card" *ngFor="let work of Category_projects">
+        <h2 class="work-card-title">{{work.work_title}}</h2>
+        <div style="padding: 2vmin; margin: 2vmin;">
+          <img  class="work-card-thumbnail" style="width: 100%; height: 25vmin;"
+            src="../../../assets/img/{{work.work_img}}.png" />
+        </div>
+      </div>
+    </div>
+    <div *ngIf=isMongodbSelected>
+      <div class="work-card" *ngFor="let work of Category_projects">
+        <h2 class="work-card-title">{{work.work_title}}</h2>
+        <div style="padding: 2vmin; margin: 2vmin;">
+          <img class="work-card-thumbnail"  style="width: 100%; height: 25vmin;" src="../../../assets/img/{{work.work_img}}.png" />
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</div>

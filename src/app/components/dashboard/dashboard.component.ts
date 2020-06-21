@@ -1,14 +1,21 @@
+
 import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
 import Typed from 'typed.js';
 import { Observable, Subscription } from 'rxjs-compat';
-import { Slide } from './carousel/carousel.interface';
-
+import { Router, ActivatedRoute } from '@angular/router';
+import { Slide } from '../../carousel/carousel.interface';
+import { FormGroup, FormControl } from '@angular/forms';
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class AppComponent implements OnInit {
+export class DashboardComponent implements OnInit {
+
+  profileForm = new FormGroup({
+    Name: new FormControl(''),
+    Email: new FormControl(''),
+  });
   isactive = true;
   title = 'my-app';
   projects = [
@@ -48,11 +55,14 @@ export class AppComponent implements OnInit {
 
   ];
 
-   Experience = 'Hi my name is Mahesh Venkatraman and welcome to my site.I am a Software Developer based in mumbai India'+
+
+   Experience = 'Hi my name is Mahesh Venkatraman and welcome to my site.I am a Software Developer based in mumbai India' +
   'I am passionate about Web Development and Competitive codings';
 
-  AboutMe = 'Hi my name is Mahesh Venkatraman and welcome to my site.'+
+  AboutMe = 'Hi my name is Mahesh Venkatraman and welcome to my site.' +
   'I am based in mumbai,India.I am a Software Developer by Profession.A Writer,Footballer by Hobby.';
+
+
 
   ngOnInit() {
     const options = {
@@ -60,11 +70,11 @@ export class AppComponent implements OnInit {
       typeSpeed: 100,
       backSpeed: 100,
       showCursor: false,
-      // cursorChar: '|',
+      cursorChar: '|',
       loop: true
     };
 
-    // const typed = new Typed('.typing-element', options);
+    const typed = new Typed('.typing-element', options);
   }
 
 
@@ -73,7 +83,15 @@ export class AppComponent implements OnInit {
     this.isactive = !this.isactive;
   }
 
+  // onSubmit() {
+  //   // TODO: Use EventEmitter with form value
+  //   console.warn(this.profileForm.value);
+  // }
+
 }
+
+
+
 
 
 

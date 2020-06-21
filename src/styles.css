@@ -34,6 +34,7 @@ footer {
 /*MENU*/
 
 .hamburger-menu {
+  /* margin-right: "5vmin"; */
   cursor: pointer;
 }
 
@@ -59,7 +60,9 @@ main {
   cursor: pointer;
   display: inline-block;
 }
-
+.hammenu-position{
+  margin-right: 5vmin;
+}
 .bar {
   display: block;
   height: 3px;
@@ -69,9 +72,8 @@ main {
 }
 
 .con {
-  margin-right: 2vmin;
+  margin-right: 5vmin;
   width: auto;
-  margin: 0 auto;
   -webkit-transition: all .7s ease;
   -moz-transition: all .7s ease;
   -ms-transition: all .7s ease;
@@ -239,8 +241,8 @@ main {
     opacity: 0;
   }
   100% {
-    -webkit-transform: translateX(-20px) rotateY(0) scale(1);
-            transform: translateX(-20px) rotateY(0) scale(1);
+    -webkit-transform: translateX(-15px) rotateY(0) scale(1);
+            transform: translateX(-15px) rotateY(0) scale(1);
 
     opacity: 1;
   }
@@ -255,8 +257,8 @@ main {
 @keyframes social-exit {
   0% {
 
-    -webkit-transform: translateX(-20px) rotateY(0) scale(1);
-            transform: translateX(-20px) rotateY(0) scale(1);
+    -webkit-transform: translateX(-15px) rotateY(0) scale(1);
+            transform: translateX(-15px) rotateY(0) scale(1);
 
     opacity: 1;
 
@@ -267,4 +269,19 @@ main {
 
 opacity: 0;
   }
+}
+
+
+
+@media screen and (max-width: 767px) {
+
+.con {
+  margin-right: 2vmin;
+  width: auto;
+  -webkit-transition: all .7s ease;
+  -moz-transition: all .7s ease;
+  -ms-transition: all .7s ease;
+  -o-transition: all .7s ease;
+  transition: all .7s ease;
+}
 }
