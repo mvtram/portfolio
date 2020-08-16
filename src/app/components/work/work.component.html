@@ -10,45 +10,55 @@
     <div class="category-type" [ngClass]="isReactSelected?'category-type-selected':'category-type-not-selected'"
       (click)="this.getWorkbyCategory('React')">React</div>
 
-    <div class="category-type" [ngClass]="isMongodbSelected?'category-type-selected':'category-type-not-selected'"
-      (click)="this.getWorkbyCategory('Mongodb')">Mongodb</div>
+    <div class="category-type" [ngClass]="isNodejsSelected?'category-type-selected':'category-type-not-selected'"
+      (click)="this.getWorkbyCategory('Nodejs')">NodeJs</div>
   </div>
 
 
   <div class="all-project-container">
     <div *ngIf=isSelected>
       <div class="work-card" *ngFor="let work of Work_projects">
+        <a style="text-decoration:none" href={{work.work_url}} target="_blank">
         <h2 class="work-card-title">{{work.work_title}}</h2>
-        <!-- <h2 class="work-card-title">{{work.work_tag}}</h2>    -->
         <div style="padding: 2vmin; margin: 2vmin;">
           <img class="work-card-thumbnail" style="width: 100%; height: 25vmin;"
             src="../../../assets/img/{{work.work_img}}.png" />
         </div>
+      </a>
       </div>
     </div>
     <div *ngIf=isAngularSelected>
+      <div style="height: 30vmin; text-align: center; font-size: 5vmin" *ngIf="Category_projects.length===0">Angular Projects Coming Soon :)</div>
       <div class="work-card" *ngFor="let work of Category_projects">
+        <a style="text-decoration:none" href={{work.work_url}} target="_blank">
         <h2 class="work-card-title">{{work.work_title}}</h2>
         <div style="padding: 2vmin; margin: 2vmin;">
           <img class="work-card-thumbnail"  style="width: 100%; height: 25vmin;" src="../../../assets/img/{{work.work_img}}.png" />
         </div>
+        </a>
       </div>
     </div>
     <div *ngIf=isReactSelected>
+      <div style="height: 30vmin; text-align: center; font-size: 5vmin" *ngIf="Category_projects.length===0">React Projects Coming Soon :)</div>
       <div class="work-card" *ngFor="let work of Category_projects">
+        <a style="text-decoration:none" href={{work.work_url}} target="_blank">
         <h2 class="work-card-title">{{work.work_title}}</h2>
         <div style="padding: 2vmin; margin: 2vmin;">
           <img  class="work-card-thumbnail" style="width: 100%; height: 25vmin;"
             src="../../../assets/img/{{work.work_img}}.png" />
         </div>
+        </a>
       </div>
     </div>
-    <div *ngIf=isMongodbSelected>
+    <div *ngIf=isNodejsSelected>
+      <div style="height: 30vmin; text-align: center; font-size: 5vmin" *ngIf="Category_projects.length===0">NodeJS Projects Coming Soon :)</div>
       <div class="work-card" *ngFor="let work of Category_projects">
+        <a style="text-decoration:none" href={{work.work_url}} target="_blank">
         <h2 class="work-card-title">{{work.work_title}}</h2>
         <div style="padding: 2vmin; margin: 2vmin;">
           <img class="work-card-thumbnail"  style="width: 100%; height: 25vmin;" src="../../../assets/img/{{work.work_img}}.png" />
         </div>
+        </a>
       </div>
     </div>
 

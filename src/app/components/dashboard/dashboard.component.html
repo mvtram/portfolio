@@ -60,28 +60,26 @@
     transform="translate(142.69 -634.312)" fill="#eee" />
 </svg>
 
-<!-- Experience -->
-<!-- <section name="experience">
-  <div class="content" role="main">
-    <h2>Experience</h2>
-    <p>{{Experience}}</p>
-  </div>
-</section> -->
+
 
 
 <div class="dashboard-container">
-  <section name="Technologies" class="section-container">
+  <section name="Technologies" class="section-container" id="Technologies">
     <div class="content" role="main">
       <div class="Technology-container">
-        <span class="typing-element-style">Hi, I'm Mahesh Venkatraman</span>
-        <span class="typing-element-style"> Experience with&nbsp;</span>
+        <span class="typing-element-style">Hi, I am Mahesh Venkatraman</span>
+        <span class="typing-element-style">I have work Experience with&nbsp;</span>
         <span class="typing-element typing-element-style"></span>
+      </div>
+      <div class="goto-links">
+        <a href="#Contact"><button class="goto-links-button">Contact Me</button></a>
+        <a href="#About"><button class="goto-links-button">Learn More</button></a>
       </div>
     </div>
   </section>
 
 
-  <section name="About-me" class="section-container">
+  <section name="About-me" class="section-container" id="About">
     <div class="content" role="main">
       <div class="about-me-container">
         <div class="about-me-img fade-in"> <img src="../../../assets/img/mahesh3.JPG" /></div>
@@ -91,30 +89,68 @@
 
           <p>Deeply passionate about Web and Android Development.</p>
 
-          <p>Check out my github profile <a href="https://github.com/mvtram" target="_blank">
-              <button mat-raised-button color="primary" class="github-profile">here.</button>
+          <div style="margin: 2vmin 0;" class="goto-links">
+           <label style="margin: 3vmin 3vmin 0 0; font-size: 3vmin;">Check out my github profile </label><a href="https://github.com/mvtram" target="_blank">
+              <button class="goto-links-button">Github</button>
             </a>
-          </p>
+          </div>
+
+          <div style="margin: 2vmin 0;" class="goto-links">
+            <label style="margin: 3vmin 3vmin 0 0; font-size: 3vmin;"> Check out my Resume</label>
+            <a href="../../../assets/files/ResumeMahesh2397.pdf" download>
+              <button class="goto-links-button">View Resume</button>
+            </a>
+
+            <!-- <a target="_blank" href="https://drive.google.com/file/d/1IrqRvcsBLa0WFisdkD_yp-OorjS6gs13/view?usp=sharing">
+              <button class="Resume" mat-raised-button color="primary">View Resume</button>
+            </a> -->
+
+          </div>
+
         </div>
       </div>
     </div>
   </section>
 
 
-  <section name="Resume-me" class="section-container">
+  <section name="Resume-me" class="section-container" id="Contact">
     <div class="content" role="main">
       <!-- About me -->
-      <h2>Want to Know more about me?</h2>
-      <!-- <p>click on the link below to download my resume. Hope to hear from you soon</p> -->
+      <h2>Let's work together!!</h2>
       <br>
-      <div class="Resume-container">
-        <a href="../../../assets/files/ResumeMahesh2397.pdf" download>
-          <button class="Resume" mat-raised-button color="primary">Download Resume</button>
-        </a>
+      <p>Please provide the following details.</p>
+      <br>
+      <div>
+        <form class="contact-form" [formGroup]="profileForm">
 
-        <a target="_blank" href="https://drive.google.com/file/d/1IrqRvcsBLa0WFisdkD_yp-OorjS6gs13/view?usp=sharing">
-          <button class="Resume" mat-raised-button color="primary">View Resume</button>
-        </a>
+          <div class="contact-form-field-container">
+            <div class="contact-form-field" [ngClass]="{'has-error': profileForm.get('name').errors && ( profileForm.get('name').touched ||  profileForm.get('name').dirty)}" >
+            <label>Name:</label>
+            <input class="input" type="text" formControlName="name" required>
+          </div>
+            <span class="error-detail" *ngIf="profileForm.get('name').value==='' && profileForm.get('name').touched">Name is required</span>
+          </div>
+          <div class="contact-form-field-container">
+            <div class="contact-form-field" [ngClass]="{'has-error': profileForm.get('email').errors && ( profileForm.get('email').touched ||  profileForm.get('email').dirty)}">
+            <label>Email:</label>
+            <input class="input" type="text" formControlName="email" required>
+            </div>
+            <span class="error-detail" *ngIf="profileForm.get('email').value==='' && profileForm.get('email').touched">Email is required</span>
+            <span class="error-detail" *ngIf="profileForm.get('email').errors">{{profileForm.get('email').getError()}}</span>
+          </div>
+
+          <div class="contact-form-field-container">
+            <div class="contact-form-field" [ngClass]="{'has-error': profileForm.get('contact').errors && ( profileForm.get('contact').touched ||  profileForm.get('contact').dirty)}">
+              <label>Phone:</label>
+              <input class="input" type="number"  maxlength=10 formControlName="contact" required>
+            </div>
+          </div>
+
+
+        <button type="submit" style="margin: 5vmin 0vmin;" class="goto-links-button"  (click)="onSubmit()">Submit</button>
+
+        </form>
+
       </div>
 
     </div>

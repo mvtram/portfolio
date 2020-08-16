@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import {minesweeper_game} from '../../../assets/img/minesweeper_game.png';
 
 @Component({
   selector: 'app-work',
@@ -12,12 +11,14 @@ export class WorkComponent implements OnInit {
     {
       work_title: 'MineSweeper game',
       work_tag: 'React',
-      work_img: 'minesweeper-gamev2'
+      work_img: 'minesweeper-gamev2',
+      work_url: '#'
     },
     {
       work_title: 'Todos List React',
       work_tag: 'React',
-      work_img: 'todo_list'
+      work_img: 'todo_list',
+      work_url: 'https://todos-mvtram.herokuapp.com/'
     },
 
   ];
@@ -25,7 +26,7 @@ export class WorkComponent implements OnInit {
   isSelected = true;
   isAngularSelected: boolean;
   isReactSelected: boolean;
-  isMongodbSelected: boolean;
+  isNodejsSelected: boolean;
 
   bntStyle = 'category-type-not-selected';
 
@@ -34,7 +35,7 @@ export class WorkComponent implements OnInit {
   ngOnInit() {
     this.isAngularSelected = false;
     this.isReactSelected = false;
-    this.isMongodbSelected = false;
+    this.isNodejsSelected = false;
     console.log('entered into work component');
   }
 
@@ -42,7 +43,7 @@ export class WorkComponent implements OnInit {
     this.isSelected = true;
     this.isAngularSelected = false;
     this.isReactSelected = false;
-    this.isMongodbSelected = false;
+    this.isNodejsSelected = false;
     console.log('category', this.Work_projects);
     return this.Work_projects;
   }
@@ -53,15 +54,15 @@ export class WorkComponent implements OnInit {
     if (category === 'Angular') {
       this.isAngularSelected = true;
       this.isReactSelected = false;
-      this.isMongodbSelected = false;
+      this.isNodejsSelected = false;
     } else if (category === 'React') {
       this.isAngularSelected = false;
       this.isReactSelected = true;
-      this.isMongodbSelected = false;
-    } else if (category === 'Mongodb') {
+      this.isNodejsSelected = false;
+    } else if (category === 'Nodejs') {
       this.isAngularSelected = false;
       this.isReactSelected = false;
-      this.isMongodbSelected = true;
+      this.isNodejsSelected = true;
     }
     this.Category_projects = this.Work_projects.filter((work, i) => {
       return work.work_tag === category;

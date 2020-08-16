@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BlogsService } from './blogs.service';
+import * as moment from 'moment';
 export interface Post {
   id: number;
   blog: {
@@ -19,7 +20,8 @@ export interface Post {
   styleUrls: ['./blogs.component.css']
 })
 export class BlogsComponent implements OnInit {
-  errorMsg = '';
+  errorMsg = 'error in loading post.';
+  status = false;
   isLoading = true;
   posts: any[];
   allitems: any[];
@@ -34,13 +36,14 @@ export class BlogsComponent implements OnInit {
         this.isLoading = true;
         this.allitems = data.items;
         this.posts = this.allitems.map((val, i) => {
-          const dt = new Date(val.published);
-          const published = dt.getFullYear() + '-' + (dt.getMonth() + 1) + '-' + dt.getDate();
+          const published = moment(val.published).format('MMMM Do YYYY');
           val.published = published;
+
           return val;
         });
         this.isLoading = false;
       }, error => {
+        this.status = true;
         this.errorMsg = error;
       });
 

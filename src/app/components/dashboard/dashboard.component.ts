@@ -5,28 +5,34 @@ import { Observable, Subscription } from 'rxjs-compat';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Slide } from '../../carousel/carousel.interface';
 import { FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
+import { Validators } from '@angular/forms';
+import { DashboardService } from './dashboard.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit {
 
-  profileForm = new FormGroup({
-    Name: new FormControl(''),
-    Email: new FormControl(''),
+
+  constructor(private fb: FormBuilder, private dashboardService: DashboardService) {
+
+  }
+
+  submitted = false;
+  public profileForm = this.fb.group({
+    name: ['', Validators.required],
+    email: ['', Validators.required],
+    contact: ['', Validators.required,Validators.maxLength(10)],
   });
+
   isactive = true;
   title = 'my-app';
-  projects = [
-    {
-      title: 'Minesweeper ReactJS Game',
-      description: 'this is a classic Minesweeper game with bombs and flags and animations,This was my first project in ReactJS',
-      links: 'https://maheshvee23.blogspot.com/2020/02/minesweeper-game-made-in-reactjs.html'
-    },
+  users: any = [];
 
 
-  ];
   slides: Slide[] = [
     {
       title: 'Angular',
@@ -63,10 +69,9 @@ export class DashboardComponent implements OnInit {
   'I am based in mumbai,India.I am a Software Developer by Profession.A Writer,Footballer by Hobby.';
 
 
-
   ngOnInit() {
     const options = {
-      strings: ['Angular.', 'React.', 'Mongodb.', 'Frontend.'],
+      strings: ['AngularJs.', 'ReactJs.', 'NodeJs.', 'Frontend.'],
       typeSpeed: 100,
       backSpeed: 100,
       showCursor: false,
@@ -79,14 +84,32 @@ export class DashboardComponent implements OnInit {
 
 
 
+
+  onSubmit(): void {
+   if (this.profileForm.valid) {
+    console.log('profile form', this.profileForm.controls);
+
+    // this.dashboardService.getUsers().subscribe(
+    //   user => {
+    //     console.log(user);
+    //   }
+    //   );
+    this.dashboardService.createUser(this.profileForm.value).subscribe(
+      user => {
+        console.log(user);
+      }
+      );
+
+    console.log('form value', this.profileForm.value);
+   }
+
+  }
+
   handleclick() {
     this.isactive = !this.isactive;
   }
 
-  // onSubmit() {
-  //   // TODO: Use EventEmitter with form value
-  //   console.warn(this.profileForm.value);
-  // }
+
 
 }
 

@@ -7,7 +7,6 @@
   background-color: white;
   box-shadow: 14px 14px 23px #c9c9c9,
     -14px -14px 23px #ffffff;
-  padding: 3vmin;
   height: auto;
   display: block;
   width: auto;
@@ -16,10 +15,20 @@
 
 }
 
+.blog-page-container{
+  background-color: #3a3a56;
+  padding: 3vmin 3vmin;
+}
+.blog-page-header{
+  font-size: 4vmin;
+color: white;
+}
+.blog-table-container{
+  padding: 3vmin;
+}
+
 .blogs-container {
   background-color: transparent;
-
-  /* box-shadow: 0px 4px 7px 7px rgba(189, 178, 189, 1); */
   padding: 2vmin;
 }
 
@@ -37,14 +46,13 @@ svg#clouds {
 
 .blog-card {
   height: 25vmin;
-
   width: 100%;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: space-evenly;
   border-radius: 1vmin;
-  background-color: #EEEEEE;
-  color: black;
+  background-color: #3a3a56;
+  color: white;
   box-shadow: 0px 4px 13px -1px rgba(189, 178, 189, 1);
 }
 
