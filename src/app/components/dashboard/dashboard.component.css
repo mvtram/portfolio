@@ -129,6 +129,14 @@ border: red solid 0.3vmin;
   padding: 1vmin;
 }
 
+.invalid-feedback{
+  font-size: 2vmin;
+  margin-left: 13vmin;
+  width: 80%;
+  text-align: left;
+  padding: 1vmin;
+  color: red;
+}
 .contact-form{
   display: flex;
   flex-direction: column;

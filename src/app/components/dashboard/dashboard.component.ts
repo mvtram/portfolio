@@ -22,11 +22,14 @@ export class DashboardComponent implements OnInit {
   }
 
   submitted = false;
+  message = '';
   public profileForm = this.fb.group({
     name: ['', Validators.required],
-    email: ['', Validators.required],
-    contact: ['', Validators.required,Validators.maxLength(10)],
+    email: ['', [Validators.required, Validators.email, Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')]],
+    contact: ['', [Validators.required, Validators.maxLength(10), Validators.minLength(10)]]
   });
+
+  // Validators.pattern('^((\+){1}91){1}[1-9]{1}[0-9]{9}$')
 
   isactive = true;
   title = 'my-app';
@@ -62,11 +65,11 @@ export class DashboardComponent implements OnInit {
   ];
 
 
-   Experience = 'Hi my name is Mahesh Venkatraman and welcome to my site.I am a Software Developer based in mumbai India' +
-  'I am passionate about Web Development and Competitive codings';
+  Experience = 'Hi my name is Mahesh Venkatraman and welcome to my site.I am a Software Developer based in mumbai India' +
+    'I am passionate about Web Development and Competitive codings';
 
   AboutMe = 'Hi my name is Mahesh Venkatraman and welcome to my site.' +
-  'I am based in mumbai,India.I am a Software Developer by Profession.A Writer,Footballer by Hobby.';
+    'I am based in mumbai,India.I am a Software Developer by Profession.A Writer,Footballer by Hobby.';
 
 
   ngOnInit() {
@@ -83,25 +86,34 @@ export class DashboardComponent implements OnInit {
   }
 
 
+  get f() { return this.profileForm.controls; }
 
 
   onSubmit(): void {
-   if (this.profileForm.valid) {
-    console.log('profile form', this.profileForm.controls);
+    this.submitted = true;
+    if (this.profileForm.valid) {
+      console.log('profile form', this.profileForm.controls);
 
-    // this.dashboardService.getUsers().subscribe(
-    //   user => {
-    //     console.log(user);
-    //   }
-    //   );
-    this.dashboardService.createUser(this.profileForm.value).subscribe(
-      user => {
-        console.log(user);
-      }
+      // this.dashboardService.getUsers().subscribe(
+      //   user => {
+      //     console.log(user);
+      //   }
+      //   );
+      this.dashboardService.createUser(this.profileForm.value).subscribe(
+        user => {
+          console.log(user);
+
+          this.submitted = false;
+          this.message = 'Thank you for registering!!';
+          this.profileForm.markAsPristine();
+          this.profileForm.markAsUntouched();
+          this.profileForm.reset();
+        }
       );
 
-    console.log('form value', this.profileForm.value);
-   }
+      console.log('form value', this.profileForm.value);
+    }
+
 
   }
 

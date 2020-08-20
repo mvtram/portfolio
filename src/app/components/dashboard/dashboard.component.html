@@ -124,33 +124,41 @@
         <form class="contact-form" [formGroup]="profileForm">
 
           <div class="contact-form-field-container">
-            <div class="contact-form-field" [ngClass]="{'has-error': profileForm.get('name').errors && ( profileForm.get('name').touched ||  profileForm.get('name').dirty)}" >
+            <div class="contact-form-field">
             <label>Name:</label>
-            <input class="input" type="text" formControlName="name" required>
+            <input class="input form-control" type="text" formControlName="name" [ngClass]="{ 'has-error': submitted && f.name.errors }">
+
           </div>
-            <span class="error-detail" *ngIf="profileForm.get('name').value==='' && profileForm.get('name').touched">Name is required</span>
-          </div>
+          <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+            <div *ngIf="f.name.errors.required">Name is required</div>
+        </div>
+         </div>
           <div class="contact-form-field-container">
-            <div class="contact-form-field" [ngClass]="{'has-error': profileForm.get('email').errors && ( profileForm.get('email').touched ||  profileForm.get('email').dirty)}">
+            <div class="contact-form-field">
             <label>Email:</label>
-            <input class="input" type="text" formControlName="email" required>
+            <input class="input form-control" type="text" formControlName="email" [ngClass]="{ 'has-error': submitted && f.email.errors }">
             </div>
-            <span class="error-detail" *ngIf="profileForm.get('email').value==='' && profileForm.get('email').touched">Email is required</span>
-            <span class="error-detail" *ngIf="profileForm.get('email').errors">{{profileForm.get('email').getError()}}</span>
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+              <div *ngIf="f.email.errors.required">Email is required</div>
+              <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+          </div>
           </div>
 
           <div class="contact-form-field-container">
-            <div class="contact-form-field" [ngClass]="{'has-error': profileForm.get('contact').errors && ( profileForm.get('contact').touched ||  profileForm.get('contact').dirty)}">
+            <div class="contact-form-field">
               <label>Phone:</label>
-              <input class="input" type="number"  maxlength=10 formControlName="contact" required>
+              <input class="input" type="number"  maxlength=10 minlength=10 formControlName="contact" [ngClass]="{ 'has-error': submitted && f.contact.errors }">
             </div>
+            <div *ngIf="submitted && f.contact.errors" class="invalid-feedback">
+              <div *ngIf="f.contact.errors.required">Contact is required</div>
+          </div>
           </div>
 
 
         <button type="submit" style="margin: 5vmin 0vmin;" class="goto-links-button"  (click)="onSubmit()">Submit</button>
 
         </form>
-
+        <h2>{{message}}</h2>
       </div>
 
     </div>

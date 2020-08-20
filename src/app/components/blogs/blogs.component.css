@@ -45,11 +45,11 @@ svg#clouds {
 }
 
 .blog-card {
-  height: 25vmin;
+  height: 15vmin;
   width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  flex-direction: row;
+  justify-content: space-between;
   border-radius: 1vmin;
   background-color: #3a3a56;
   color: white;
