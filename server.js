@@ -33,7 +33,7 @@ app.use((req,res,next)=>{
   }
   next();
 })
-app.use('/users',clientuser);
+// app.use('/users',clientuser);
 
 
 
@@ -41,25 +41,25 @@ app.use('/users',clientuser);
 app.use(express.static(__dirname + '/angularapp'));
 
 
-app.get('/', function(req,res) {
+app.get('/*', function(req,res) {
 res.sendFile(path.join(__dirname+'/angularapp/index.html'));
 });
 
 
-app.use((req,res,next)=>{
-  const error = new Error('Not found');
-  error.status = 404;
-  next(error);
-})
+// app.use((req,res,next)=>{
+//   const error = new Error('Not found');
+//   error.status = 404;
+//   next(error);
+// })
 
-app.use((error,req,res,next)=>{
-  res.status(error.status || 500);
-  res.json({
-    error:{
-      message: error.message
-    }
-  })
-})
+// app.use((error,req,res,next)=>{
+//   res.status(error.status || 500);
+//   res.json({
+//     error:{
+//       message: error.message
+//     }
+//   })
+// })
 
 // Start the app by listening on the default Heroku port
 
