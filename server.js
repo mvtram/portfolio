@@ -14,25 +14,27 @@ const clientuser = require('./api/routes/user');
 
 
 
-mongoose.connect('mongodb://127.0.0.1/portfoliodb',{ useNewUrlParser: true,useUnifiedTopology: true });
-// mongoose.connect('mongodb://ec2-13-234-48-42.ap-south-1.compute.amazonaws.com/admindb',{ useNewUrlParser: true,useUnifiedTopology: true });
+// mongoose.connect('mongodb://127.0.0.1/portfoliodb',{ useNewUrlParser: true,useUnifiedTopology: true });
+// // mongoose.connect('mongodb://ec2-13-234-48-42.ap-south-1.compute.amazonaws.com/admindb',{ useNewUrlParser: true,useUnifiedTopology: true });
 
-app.use(morgan('dev'));
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
+// app.use(morgan('dev'));
+// app.use(bodyParser.urlencoded({extended: false}));
+// app.use(bodyParser.json());
 
 
-app.use((req,res,next)=>{
-  res.header('Access-Control-Allow-Origin','*');
-  res.header('Access-Control-Allow-Headers','Origin,X-Requested-With,Content-Type,Accept,Authorization');
+// app.use((req,res,next)=>{
+//   res.header('Access-Control-Allow-Origin','*');
+//   res.header('Access-Control-Allow-Headers','Origin,X-Requested-With,Content-Type,Accept,Authorization');
 
-  if (req.method==='OPTIONS') {
-    res.header('Access-Control-Allow-Methods','PUT','POST','GET');
-    return res.status(200).json({});
+//   if (req.method==='OPTIONS') {
+//     res.header('Access-Control-Allow-Methods','PUT','POST','GET');
+//     return res.status(200).json({});
 
-  }
-  next();
-})
+//   }
+//   next();
+// });
+
+
 // app.use('/users',clientuser);
 
 
