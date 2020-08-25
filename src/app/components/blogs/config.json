@@ -1,2 +1,2 @@
-"start": "ng server.js"
+"start": "node server.js"
 "postinstall": "ng build --output-path angularapp  --aot --prod"
