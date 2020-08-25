@@ -37,7 +37,7 @@ export class BlogsComponent implements OnInit {
         this.allitems = data.items;
         this.posts = this.allitems.map((val, i) => {
           const published = moment(val.published).format('MMMM Do YYYY');
-          val.published = published;
+          val.createdate = published;
 
           return val;
         });
